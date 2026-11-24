@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/css/estilo.css">
+		<title>Lista de Cliente</title>
+	</head>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Tel</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="cliente : ${clientes}">
+	<td th:text="${cliente.nome}">Nome</td>
+	<td th:text="${cliente.tel}">Tel</td>
+	<td>
+		<a th:href="@{/paginas/clientes/{id}/editar(id=${cliente.id})}">Editar</a>
+		<form th:action="@{/paginas/clientes/{id}/remover(id=${cliente.id})}" method="post">
+		<button type="submit">Remover</button>
+		</form>
+	</td>
+
+</tr>
+</tbody>
+</table>
+</html>

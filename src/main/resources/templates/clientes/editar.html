@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar cliente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+</head>
+<body>
+    <h1>Editar cliente</h1>
+
+    <form action="/paginas/clientes/editar" method="post" th:object="${cliente}">
+		<input type="hidden" th:field="*{id}">
+        <p>
+            <label for="nome">Nome</label>
+            <input type="text" th:field="*{nome}">
+            <span th:errors="*{nome}"></span>
+        </p>
+		
+		<p>
+		    <label for="tel">Tel</label>
+		    <input type="text" th:field="*{tel}">
+		    <span th:errors="*{tel}"></span>
+		</p>
+        
+
+        <button type="submit">Salvar alterações</button>
+    </form>
+
+    <a href="/paginas/clientes">Voltar para a lista</a>
+</body>
+</html>

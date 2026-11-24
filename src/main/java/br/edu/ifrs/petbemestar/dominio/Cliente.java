@@ -1,11 +1,11 @@
 package br.edu.ifrs.petbemestar.dominio;
-
-
 import jakarta.persistence.Entity;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +16,17 @@ public class Cliente{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+    
+    @NotBlank(message = "Informe o nome.")
 	private String nome;
-	private String telefone;
 	
+    @NotBlank(message = "Informe o telefone.")	
+	private String tel;
+	
+		
 	@OneToMany(mappedBy = "cliente")
 	private List<Pet> pets = new ArrayList<>();
+		
 	
 	@OneToMany(mappedBy = "cliente")
 	private List<Agendamento> agendamentos  = new ArrayList<>();
@@ -28,11 +34,19 @@ public class Cliente{
 	public Cliente() {
 	}
 	
-	public Cliente(String nome, String telefone) {
+	public Cliente(String nome, String tel) {
 		this.nome = nome; 
-		this.telefone = telefone;
+		this.tel = tel;
 	}
 	
+    public Long getId() {
+		return id;
+	}
+	   
+	public void setId(Long id) {
+		this.id = id;
+	}
+	   
 	public String getNome(){
 		return nome;
 	}
@@ -42,11 +56,11 @@ public class Cliente{
 	}
 	
 	public String getTel() {
-		return telefone;
+		return tel;
 	}
 	
-	public void setTel(String telefone) {
-		this.telefone = telefone;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 	
 	public void adicionarPet(Pet pet) {

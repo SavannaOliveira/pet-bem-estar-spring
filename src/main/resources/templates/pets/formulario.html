@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+	<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+		<head>
+			<meta charset="UTF-8">
+			<title>Cadastro de Pet</title>
+		</head>
+		
+		<body>
+			<h1>Cadastro de Pet</h1>
+			<form action="/paginas/pets/nova" method="post" th:object="${pet}">
+			
+				<p>
+				<label for="nome">Nome</label>
+				<input type="text" th:field="*{nome}">
+				<span th:errors="*{nome}"></span>
+				</p>
+				
+				<p>
+				<label for="cliente.id">Cliente</label>
+				<select th:field="*{cliente.id}">
+					<option value="">Selecione um Cliente</option>	
+					<option th:each="p : ${clientes}"
+					th:value="${p.id}"
+					th:text="${p.nome}">Cliente</option>
+				</select>
+												
+				<span th:errors="*{cliente}"></span>
+				</p>
+				
+				<p>
+					<label for="tipoPet">Tipo</label>
+				<select th:field="*{tipoPet}">					
+					<option value="">Selecione um Tipo</option>	
+					<option th:each="t : ${T(br.edu.ifrs.petbemestar.dominio.TipoPet).values()}"
+					th:value="${t}"
+					th:text="${t}">Tipo</option>
+				</select>
+					</p>
+					
+					
+					<p>
+					<label for="tamanho">Tamanho</label>
+				<select th:field="*{tamanho}">					
+					<option value="">Selecione um Tamanho</option>	
+					<option th:each="a : ${T(br.edu.ifrs.petbemestar.dominio.Tamanho).values()}"
+					th:value="${a}"
+					th:text="${a}">Tamanho</option>
+				</select>
+					</p>
+					
+					
+			
+			<button type="submit">Cadastrar</button>
+			</form>
+		</body>
+</html>

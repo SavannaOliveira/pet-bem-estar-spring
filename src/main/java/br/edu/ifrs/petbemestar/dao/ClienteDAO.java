@@ -2,7 +2,6 @@ package br.edu.ifrs.petbemestar.dao;
 
 import java.util.List;
 
-
 import br.edu.ifrs.petbemestar.dominio.Cliente;
 
 public interface ClienteDAO {

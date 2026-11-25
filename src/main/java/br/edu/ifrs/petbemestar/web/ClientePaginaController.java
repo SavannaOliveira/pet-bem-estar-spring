@@ -1,9 +1,7 @@
 package br.edu.ifrs.petbemestar.web;
 import br.edu.ifrs.petbemestar.dao.*;
-
 import br.edu.ifrs.petbemestar.dominio.Cliente;
 import jakarta.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,8 +54,7 @@ public class ClientePaginaController{
 			}
 			dao.atualizar(cliente);
 			return "redirect:/paginas/clientes";
-			
-	
+
 	}
 	
 	@PostMapping("/paginas/clientes/{id}/remover")
